@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Piano Kit Tool</title>
+    <script>
+
+
+
+
+
+      function removeTransition(event){
+        // console.log(event);
+        if(event.propertyName !== 'transform') return;
+        //skip it if it is not a transform;
+        // console.log(event.propertyName)
+        event.target.classList.remove('playing');
+
+      }
+      function playSound(event){
+
+          const audio = document.querySelector(`audio[data-key='${event.keyCode}']`);
+          const key = document.querySelector(`div[data-key='${event.keyCode}']`);
+          // console.log(audio);
+          if(!audio) return; //if there is no such audio for that key, it will stop the function from running all together;
+            key.classList.toggle('playing'); // same as key.addClass('playing')
+          audio.currentTime =0; // rewind to the start and allow to hit the button and play music repeatedly
+          audio.play();// play the music
+          // console.log(key);
+
+          // key.classList.remove('playing');
+          // key.classList.toggle('playing');
+}
+      const keys = Array.from(document.querySelectorAll('.key'));
+      keys.forEach(key => key.addEventListener('transitionend',removeTransition));
+
+      window.addEventListener('keydown',playSound);
+
+    </script>
+  <style media="screen">
+    html {
+  font-size: 10px;
+  background: url(https://i.ytimg.com/vi/WSlKRnphV8A/maxresdefault.jpg) bottom center;
+  background-size: cover;
+  height: auto;
+  }
+    body,html {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    .keys {
+      display: flex;
+      flex: 1;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+}
+    .key{
+      border: 4px solid black;
+      border-radius: 5px;
+      margin: 1rem;
+      font-size: 1.5rem;
+      padding: 1rem .5rem;
+      transition: all 1.07s ease;
+      /*transition: all 1.07s..it will stay on the screen longer */
+      width: 100px;
+      text-align: center;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      text-shadow: 0 0 5px black;
+    }
+      .playing{
+        transform: scale(1.3);
+        /*scale (2) is so muxh bigger*/
+        border-color: #ffc600;
+        box-shadow: 0 0 10px #ffc600;
+      }
+      kbd{
+        display: block;
+        font-size: 40px;
+      }
+      .sound{
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: .1rem;
+        color: #ffc600;
+      }
+    </style>
+  </head>
+  <body>
+
+<div class="keys">
+  <div class="keyss">
+
+
+  <div data-key="192" class="key">
+    <kbd>`</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="49" class="key">
+    <kbd>1</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="50" class="key">
+    <kbd>2</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="51" class="key">
+    <kbd>3</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="52" class="key">
+    <kbd>4</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="53" class="key">
+    <kbd>5</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="54" class="key">
+    <kbd>6</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="55" class="key">
+    <kbd>7</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="56" class="key">
+    <kbd>8</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="57" class="key">
+    <kbd>9</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="48" class="key">
+    <kbd>0</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="189" class="key">
+    <kbd>-</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="187" class="key">
+    <kbd>=</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="8" class="key">
+    <kbd>del</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+</div>
+
+
+
+
+
+
+  <div data-key="65" class="key">
+    <kbd>A</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="83" class="key">
+    <kbd>S</kbd>
+    <span class="sound">HIHAT</span>
+  </div>
+  <div data-key="68" class="key">
+    <kbd>D</kbd>
+    <span class="sound">Kick</span>
+  </div>
+  <div data-key="70" class="key">
+    <kbd>F</kbd>
+    <span class="sound">Kick</span>
+  </div>
+  <div data-key="71" class="key">
+    <kbd>G</kbd>
+    <span class="sound">OPENHAT</span>
+  </div>
+  <div data-key="72" class="key">
+    <kbd>H</kbd>
+    <span class="sound">BOOM</span>
+  </div>
+  <div data-key="74" class="key">
+    <kbd>J</kbd>
+    <span class="sound">SNARE</span>
+  </div>
+  <div data-key="75" class="key">
+    <kbd>K</kbd>
+    <span class="sound">TOM</span>
+  </div>
+  <div data-key="76" class="key">
+    <kbd>L</kbd>
+    <span class="sound">TINK</span>
+  </div>
+
+  <div class="">
+
+
+  <div data-key="9" class="key">
+    <kbd>tab</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="81" class="key">
+    <kbd>Q</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="87" class="key">
+    <kbd>W</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="69" class="key">
+    <kbd>E</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="82" class="key">
+    <kbd>R</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="84" class="key">
+    <kbd>T</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="89" class="key">
+    <kbd>Y</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="85" class="key">
+    <kbd>U</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="73" class="key">
+    <kbd>I</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="79" class="key">
+    <kbd>O</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="80" class="key">
+    <kbd>P</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="219" class="key">
+    <kbd>[</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="221" class="key">
+    <kbd>]</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+  <div data-key="220" class="key">
+    <kbd>\</kbd>
+    <span class="sound">CLAP</span>
+  </div>
+</div>
+
+<audio data-key="192" src="piano/39204__jobro__piano-ff-056.wav"></audio>
+<audio data-key="49" src="piano/39202__jobro__piano-ff-054.wav"></audio>
+<audio data-key="50" src="piano/39200__jobro__piano-ff-052.wav"></audio>
+<audio data-key="51" src="piano/39199__jobro__piano-ff-051.wav"></audio>
+<audio data-key="52" src="piano/39198__jobro__piano-ff-050.wav"></audio>
+<audio data-key="53" src="piano/39196__jobro__piano-ff-048.wav"></audio>
+<audio data-key="54" src="piano/39193__jobro__piano-ff-045.wav"></audio>
+<audio data-key="55" src="piano/39191__jobro__piano-ff-044.wav"></audio>
+<audio data-key="56" src="piano/39189__jobro__piano-ff-042.wav"></audio>
+<audio data-key="57" src="piano/39187__jobro__piano-ff-040.wav"></audio>
+<audio data-key="48" src="piano/39185__jobro__piano-ff-038.wav"></audio>
+<audio data-key="189" src="piano/39183__jobro__piano-ff-036.wav"></audio>
+<audio data-key="187" src="piano/39181__jobro__piano-ff-034.wav"></audio>
+<audio data-key="8" src="piano/39179__jobro__piano-ff-032.wav"></audio>
+
+<audio data-key="9" src="piano/39203__jobro__piano-ff-055.wav"></audio>
+<audio data-key="81" src="piano/39201__jobro__piano-ff-053.wav"></audio>
+<audio data-key="87" src="piano/39197__jobro__piano-ff-049.wav"></audio>
+<audio data-key="69" src="piano/39194__jobro__piano-ff-046.wav"></audio>
+<audio data-key="82" src="piano/39190__jobro__piano-ff-043.wav"></audio>
+<audio data-key="84" src="piano/39188__jobro__piano-ff-041.wav"></audio>
+<audio data-key="89" src="piano/39186__jobro__piano-ff-039.wav"></audio>
+<audio data-key="85" src="piano/39184__jobro__piano-ff-037.wav"></audio>
+<audio data-key="73" src="piano/39182__jobro__piano-ff-035.wav"></audio>
+<audio data-key="79" src="piano/39180__jobro__piano-ff-033.wav"></audio>
+<audio data-key="80" src="piano/39178__jobro__piano-ff-031.wav"></audio>
+<audio data-key="219" src="piano/39176__jobro__piano-ff-029.wav"></audio>
+<audio data-key="221" src="piano/39174__jobro__piano-ff-027.wav"></audio>
+<audio data-key="220" src="piano/39172__jobro__piano-ff-025.wav"></audio>
+
+  <audio data-key="65" src="piano/39162__jobro__piano-ff-015.wav"></audio>
+  <audio data-key="83" src="piano/39163__jobro__piano-ff-016.wav"></audio>
+  <audio data-key="68" src="piano/39165__jobro__piano-ff-018.wav"></audio>
+  <audio data-key="70" src="piano/39167__jobro__piano-ff-020.wav"></audio>
+  <audio data-key="71" src="piano/39169__jobro__piano-ff-022.wav"></audio>
+  <audio data-key="72" src="piano/39171__jobro__piano-ff-024.wav"></audio>
+  <audio data-key="74" src="piano/39173__jobro__piano-ff-026.wav"></audio>
+  <audio data-key="75" src="piano/39175__jobro__piano-ff-028.wav"></audio>
+  <audio data-key="76" src="piano/39177__jobro__piano-ff-030.wav"></audio>
+
+</div>
+  </body>
+</html>
